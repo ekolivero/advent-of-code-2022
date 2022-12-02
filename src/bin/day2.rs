@@ -63,7 +63,10 @@ fn get_player_shape_w_secret(opponent_shape: Shape, game_result: char) -> Shape 
             Shape::Scissor => Shape::Rock
         }
     } else {
-        opponent_shape
+        //This is the only part I don't really like.
+        // I had to implement the Copy trait, otherwise &Shape != Shape. 
+        // Without reference the borrowchecker complain.
+        opponent_shape 
     }
 }
 
